@@ -7,8 +7,8 @@ stages{
 	{
 		steps
 		{
-		 bat 'dotnet clean'
-		 bat 'dotnet build'
+		 sh 'dotnet clean'
+		 sh 'dotnet build'
 		}
 	}	
       }
