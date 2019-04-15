@@ -7,7 +7,7 @@ stages{
 	{
 		steps
 		{
-		 sh 'dotnet clean'
+		 //sh 'dotnet clean'
 		 sh 'dotnet build'
 		}
 	}	
