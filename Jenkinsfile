@@ -16,7 +16,7 @@ stages{
 	{
 		steps
 		{
-         sh 'dotnet test Equinox.Domain.Tests/Equinox.Domain.Tests.csproj"
+         sh 'dotnet test Equinox.Domain.Tests/Equinox.Domain.Tests.csproj'
 		}
 	}
 	
