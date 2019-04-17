@@ -33,6 +33,14 @@ stages{
 			 } 
 		 }	
       	}
+	stage('Application Deploy')
+	{
+		steps
+		{
+         sh '''    '''
+		}
+	}
+		
 	
       }
   }
