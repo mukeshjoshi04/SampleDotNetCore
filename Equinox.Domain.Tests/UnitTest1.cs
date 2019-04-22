@@ -23,5 +23,15 @@ namespace Equinox.Domain.Tests
             var result = controller.IsValid();
             Assert.IsType<bool>(result);
         }
+
+        [Fact]
+        public void RemoveCustomercommandIsValidMethodType()
+        {
+            DateTime dt = new DateTime(1993, 10, 04);
+            Guid guid = new Guid("403d076a-d473-4077-8e0d-2c306498f2d6");
+            var controller = new RemoveCustomerCommand(guid);
+            var result = controller.IsValid();
+            Assert.IsType<bool>(result);
+        }
     }
 }
