@@ -31,34 +31,24 @@ stages{
 			  dotnet /home/mukesh/Desktop/sonar-scanner-msbuild-4.6.0.1930-netcoreapp2.0/SonarScanner.MSBuild.dll end
 			  '''
 			 } 
-			 sleep(10)
-			  script
-			  {
-			  def qg = waitForQualityGate()
+		 }	
+      	}
+	 stage('Quality Gate')
+	 {
+		steps
+		{
+		  script
+		   {
+		     timeout(time:20, unit: 'SECONDS'){
+              def qg = waitForQualityGate()
               if (qg.status != 'OK') {
-                  error "Pipeline aborted due to quality gate failure: ${qg.status}"
+                  //error "Pipeline aborted due to quality gate failure: ${qg.status}"
 				  currentBuild.result = "FAILURE"
               }
 			  }
-		 }	
-      	}
-	 //stage('Quality Gate')
-	 //{
-		//steps
-		//{
-          //timeout(time: 1, unit: 'HOURS')
-		  //script
-		   //{
-		     //timeout(time: 2, unit: 'MINUTES'){
-              //def qg = waitForQualityGate()
-              //if (qg.status != 'OK') {
-                  //error "Pipeline aborted due to quality gate failure: ${qg.status}"
-				  //currentBuild.result = "FAILURE"
-              //}
-			  //}
-           //}
-		//}
-      //}	
+           }
+		}
+      }	
 	stage('Application Deploy')
 	{
 		steps
