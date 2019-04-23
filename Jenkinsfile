@@ -19,7 +19,7 @@ stages{
          sh 'dotnet test Equinox.Domain.Tests/Equinox.Domain.Tests.csproj'
 		}
 	}
-	stage ('SonarQube Analysis')
+	stage ('SonarQube Analysis and Quality Gates')
       	{
          steps
 		 {
@@ -31,24 +31,17 @@ stages{
 			  dotnet /home/mukesh/Desktop/sonar-scanner-msbuild-4.6.0.1930-netcoreapp2.0/SonarScanner.MSBuild.dll end
 			  '''
 			 } 
-		 }	
-      	}
-	 stage('Quality Gate')
-	 {
-		steps
-		{
-		  script
-		   {
-		     timeout(time:20, unit: 'SECONDS'){
+			 sleep(10)
+			 script
+			  {
               def qg = waitForQualityGate()
               if (qg.status != 'OK') {
                   //error "Pipeline aborted due to quality gate failure: ${qg.status}"
 				  currentBuild.result = "FAILURE"
               }
-			  }
-           }
-		}
-      }	
+              }
+		 }	
+      	}	
 	stage('Application Deploy')
 	{
 		steps
