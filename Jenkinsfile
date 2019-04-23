@@ -32,11 +32,14 @@ stages{
 			  '''
 			 } 
 			 sleep(10)
+			  script
+			  {
 			  def qg = waitForQualityGate()
               if (qg.status != 'OK') {
                   error "Pipeline aborted due to quality gate failure: ${qg.status}"
 				  currentBuild.result = "FAILURE"
               }
+			  }
 		 }	
       	}
 	 //stage('Quality Gate')
