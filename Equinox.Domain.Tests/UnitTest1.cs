@@ -33,5 +33,11 @@ namespace Equinox.Domain.Tests
             var result = controller.IsValid();
             Assert.IsType<bool>(result);
         }
+
+        [Fact]
+        public void MethodType()
+        {
+            Assert.IsType<bool>(false);
+        }
     }
 }
