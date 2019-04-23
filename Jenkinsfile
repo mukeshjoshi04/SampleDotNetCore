@@ -31,7 +31,7 @@ stages{
 			  dotnet /home/mukesh/Desktop/sonar-scanner-msbuild-4.6.0.1930-netcoreapp2.0/SonarScanner.MSBuild.dll end
 			  '''
 			 } 
-			 sleep(10)
+			 sleep(20)
 			 script
 			  {
               def qg = waitForQualityGate()
